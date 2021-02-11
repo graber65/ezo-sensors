@@ -8,7 +8,16 @@ Hardware used is the atlas PH, RTD and DO EZO boards and probes, the Whitebox ra
 """
 
 import time
+import mariadb
+import sys
 from AtlasI2C import (AtlasI2C)
+
+# Static variables
+db_user ='connpi'
+db_password = 'N0Password'
+# db_password = '*56F98A8DA01EA0CA86432DDEFFDFE679EE06EE1E'
+db_host = "192.168.1.189"
+db_port = 3306
 
 
 def print_devices(device_list, device):
@@ -62,6 +71,33 @@ def print_help_text():
       by default it will poll every %0.2f seconds
 >> Pressing ctrl-c will stop the polling
     ''' % (AtlasI2C.LONG_TIMEOUT, AtlasI2C.LONG_TIMEOUT))
+
+def db_init():
+    try:
+        conn = miriadb.connector(
+            user=db_user,
+            password=db_password,
+            host=db_host,
+            port=db_port
+        )
+
+    except mariadb.Error as e:
+        print(f"error connecting to MariaDB Platform: {e}")
+        sys.exit(1)
+
+    CREATE DATABASE IF NOT EXISTS monitor;
+
+    CREATE TABLE monitor.water (
+        s_ph DECIMAL (2,3),
+        s_temp (3,3),
+        s_do (3,3),
+        s_date DATETIEM PRIMARY KEY,
+        UNIQUE (s_date)
+    ) ENGINE=InnoDB;
+
+    GRANT SELECT, INSERT, UPDATE, DELETE, DROP
+     ON monitor.water
+     TO 'conpi'@''
 
 
 def main():

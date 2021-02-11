@@ -1,0 +1,12 @@
+Maria db
+
+list users
+ SELECT User FROM mysql.user;
+
+list users and location
+SELECT host, user FROM mysql.user;
+
+How to find the privilege(s) granted to a particular MySQL user
+show grants for 'vivek'@'%';
+or
+show grants for 'vivek'@'192.168.1.1';

@@ -3,7 +3,7 @@ _This project is going to read PH, Temperature and Dissolved Oxygen (DO) from se
 This project uses a Raspberry PI 3b, a Whitebox carrier boards for the Raspberry Pi platform  and Atlas Scientific EZO sensors and probes.
 All the parts are available from https://atlas-scientific.com/
 
-\Full hardware documentation, quickstart guide for the Whitebox Tentacle T3 for Raspberry Pi can be found here https://www.whiteboxes.ch/docs/tentacle/t3
+Full hardware documentation, quickstart guide for the Whitebox Tentacle T3 for Raspberry Pi can be found here https://www.whiteboxes.ch/docs/tentacle/t3
 
 # Preparing the Raspberry Pi #
 ### Install the latest Raspberry Pi OS
